@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -10,10 +13,20 @@
     "@types/node": "^12.12.62",
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.6",
+    "firebase": "^8.2.4",
+    "instagram-private-api": "^1.43.3",
+    "lodash": "^4.17.20",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "typescript": "^3.7.5"
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.2.1",
+    "typescript": "^3.7.5",
+    "unirest": "^0.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,5 +48,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.165",
+    "@types/react-redux": "^7.1.12",
+    "@types/styled-components": "^5.1.7"
   }
 }

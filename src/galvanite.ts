@@ -1,0 +1,11 @@
+export default {
+  apiKey: "AIzaSyCdE22Rd1shpsME8ZyiY24seF3m2xGxiws",
+  authDomain: "social-service-beetle.firebaseapp.com",
+  databaseURL: "https://social-service-beetle-default-rtdb.firebaseio.com",
+  projectId: "social-service-beetle",
+  storageBucket: "social-service-beetle.appspot.com",
+  messagingSenderId: "329910514698",
+  appId: "1:329910514698:web:b9656f9b7d98c4b9cd9bf3",
+  measurementId: "G-C5Z3H2MG3M",
+  javonID: "2aff9b187fa0b88fea47a0f817520aaec797d8b5bdf1b6d9e9df16b8683d1986b98a503cf68c0d8af634d2a60e7278040507bce913252dc86735c05d211f69477033b75a0aab9881effca5b08798707b54dc905e355d3d9ccd0c477c3a2dceab1573d4b575d208849769bfcaf7c4a823f07069f5f0ac9744a38b1c6ac4f38ea7754c63041cb3f4fcc411842e741e99dd151920427993feea8028753c7e2e4e2c797c6179034fb718f8bd46e7aec047ef035fccaea3caca7dd0069f55dceac18f89876dd3940bad12db5428e68d70905eb3d3e42c7e0112be813faeb9714ec5d30b1174bcdbfd43e1f9450322bf8217521f7625ff1d2d206c1389b1f3925914e0bbc44c7b7dba67c21da2a576eab7984b6dfed623ff0ce3ea0b2295970c34f1de521a04d2b06f7e4e42bb332775b7abf003e58ebf3b1564484215146ab666689a"
+}
