@@ -1,13 +1,13 @@
 import * as React from 'react';
-// import { IgApiClient } from 'instagram-private-api';
-// import { sample } from "lodash";
 import galvanite from "../galvanite";
-import firebase from "firebase/app"
-import Grid from '@material-ui/core/Grid';
+import { initializeApp } from 'firebase/app';
+import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
 import Box from '@material-ui/core/Box';
-import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Skeleton from '@material-ui/lab/Skeleton';
+import Highlight from './Highlight';
+
+import { EventNote } from '@material-ui/icons';
 require("firebase/database");
 
 interface IMyWorkProps {
@@ -24,20 +24,20 @@ interface IPostNodeData {
 }
 interface MediaProps {
   loading?: boolean,
-  data: Array<IPostNodeData>
+  data: Array<string>
 }
 
 function Media(props: MediaProps) {
   const { loading, data} = props;
   return (
-    <Grid container wrap="wrap"className="ig-content">
+    <div className="ig-content">
       {(loading ? Array.from(new Array(3)) : data).map((item, index) => (
-        <Box key={index}  width={"25%"} marginRight={0} my={5}>
+        <Box key={index}>
           {item ? (
             // <a href=``></a>
             <Paper id="paper-img">
-              <a href={"https://instagram.com/p/"+item.post.shortcode} target="_blank" rel="noopener noreferrer">
-                <img src={item.post.thumbnail_src} alt="Javon's work"/>
+              <a href={item} target="_blank" rel="noopener noreferrer">
+                <img src={item} alt="Javon's work"/>
               </a>
             </Paper>
           ) : (
@@ -45,33 +45,49 @@ function Media(props: MediaProps) {
           )}
         </Box>
       ))}
-    </Grid>
+    </div>
   );
 }
 
 
 const MyWork: React.FunctionComponent<IMyWorkProps> = (props) => {
-  const [posts, reloadPosts] = React.useState<Array<IPostNodeData>>([]);
+  const [picURLs, chPicURLs] = React.useState<Array<string>>([]);
   const [loadingState, chLoadingState] = React.useState<boolean>(true);
 
   React.useEffect(()=>{
-    firebase.initializeApp(galvanite);
-    var starCountRef = firebase.database().ref(`/users/${galvanite.javonID}/instagram/posts`);
-    starCountRef.on('value', (snapshot) => {
-      console.log();
-      if(snapshot.val() !== null){
-        const data = snapshot.val();
-        reloadPosts(data);
+    initializeApp(galvanite);
+    // var starCountRef = firebase.database().ref(`/users/${galvanite.javonID}/instagram/posts`);
+    // Get a reference to the storage service, which is used to create references in your storage bucket
+    const storage = getStorage();
+    const listRef = ref(storage, 'my-work');
+    listAll(listRef)
+      .then((res) => {
+        res.prefixes.forEach((folderRef) => {
+          // All the prefixes under listRef.
+          // You may call listAll() recursively on them.
+        });
+        res.items.forEach((itemRef) => {
+          // All the items under listRef.
+          getDownloadURL(itemRef)
+            .then(url => {
+              chPicURLs(oldArr => [...oldArr, url])
+            })
+          });
+        })
+        .then(()=>{
         chLoadingState(false);
-      }
-    })
-  }, [reloadPosts]);
+      })
+      .catch((error) => {
+        // Uh-oh, an error occurred!
+      });
+  }, []);
 
   return (
     <Box overflow="hidden" id="myWork">
+      <Highlight />
       <div id="paper">
       {/* <span className="style-bar" /> */}
-      <Media loading={loadingState} data={posts} />
+      <Media loading={loadingState} data={picURLs} />
       </div>
     </Box>
   )

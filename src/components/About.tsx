@@ -1,6 +1,6 @@
 import * as React from 'react';
-import javon from '../img/hi.jpg';
-import javonFloater from '../img/hi.png';
+import javon from '../img/craft.png';
+import javonFloater from '../img/craft-overlay.png';
 import CSS from 'csstype';
 export interface IAboutProps {
 }
@@ -22,18 +22,8 @@ export default function About (props: IAboutProps) {
       chParallax((y)/5);
     }
     window.addEventListener("scroll", scrollChange);
-    // if(parallax > 20){
-    //   chImgStyle(imgAnimationVisible)
-    //   // console.log(parallax)
-    // }else if( parallax <= 20){
-    //   chImgStyle(imgAnimationHidden)
-
-    // }
   }, [chImgStyle, chParallax, parallax]);
 
-  // const imgAnimation: CSS.Properties = {
-  //   marginTop: `-${parallax}px`
-  // }
 
   return (
     <div id="about">
@@ -41,13 +31,13 @@ export default function About (props: IAboutProps) {
         <img id="floater" src={javonFloater} alt="javon"/>
         <span id="circle"></span>
         <img id="backdrop" src={javon} alt="About Javon"/>
-      </div>
-      <div className="txtContainer">
-        <p>Shoe Designer</p>
-        <p>&</p>
-        <p>Educator</p>
-        <p>Austin, Texas</p>
-        <span></span>
+        <div className="txtContainer">
+          <p>Shoe Designer</p>
+          <p>&</p>
+          <p>Artist</p>
+          <p>Austin, Texas</p>
+          <span></span>
+        </div>
       </div>
     </div>
   );

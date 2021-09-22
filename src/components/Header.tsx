@@ -18,7 +18,7 @@ export default function Header (props: IHeaderProps) {
   React.useEffect(()=>{
     const scrollChange = () => {
       const y:number = window.scrollY;
-      chParallax(- (y)/12);
+      chParallax(- (y)/70);
     }
   
     window.addEventListener("scroll", scrollChange);
